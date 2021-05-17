@@ -1,0 +1,231 @@
+{   
+	"CUSTOMERS":[
+		{
+			"dni":"79348974",
+			"name":"Juan",
+			"surname":"Perez",
+			"fullname":"Juan Perez"
+		},
+		{
+			"dni":"98478270",
+			"name":"Jose",
+			"surname":"Agurto",
+			"fullname":"Jose Agurto"
+		},
+		{
+			"dni":"79094395",
+			"name":"Maria",
+			"surname":"Lopez",
+			"fullname":"Maria Lopez"
+		},
+		{
+			"dni":"92094872",
+			"name":"Manuel",
+			"surname":"Domingo",
+			"fullname":"Manuel Domingo"
+		}
+	],
+	"VEHICLES":[
+		{
+			"image":"https://image.flaticon.com/icons/svg/1168/1168000.svg",
+			"plate":"EM-1234",
+			"cylinder":"200",
+			"brand":"PULSAR",
+			"model":"NS",
+			"type":"Lineal",
+			"owner":"Francisco Juarez"
+		},
+		{
+			"image":"https://image.flaticon.com/icons/svg/296/296210.svg",
+			"plate":"EM-456",
+			"cylinder":"125",
+			"brand":"HONDA",
+			"model":"GL",
+			"type":"Lineal",
+			"owner":"Pablo Mendoza"
+		},
+		{
+			"image":"https://image.flaticon.com/icons/svg/1205/1205960.svg",
+			"plate":"EM-847",
+			"cylinder":"200",
+			"brand":"HONDA",
+			"model":"XR",
+			"type":"Lineal",
+			"owner":"Ramiro Cruz"
+		},
+		{
+			"image":"https://image.flaticon.com/icons/svg/226/226569.svg",
+			"plate":"EM-949",
+			"cylinder":"150",
+			"brand":"MAVILA",
+			"model":"JUMBO",
+			"type":"Cuatrimoto",
+			"owner":"Rosa Perlaza"
+		}
+	],
+	"SERVICE_CARDS":[
+		{
+			"id":"02012019100229",
+			"services":"Mantenimiento Completo, cambio retenes de la volante",
+			"reason":"Falla en el carburador",
+			"start_date":"02/01/2019 10:30",
+			"end_date":"02/01/2019 11:30",
+			"price":"S/. 15.00"
+		},
+		{
+			"id":"05012019092000",
+			"services":"Cambio de Anillos",
+			"reason":"Reparación preventiva",
+			"start_date":"05/01/2019 09:00",
+			"end_date":"05/01/2019 15:00",
+			"price":"S/. 50.00"
+		},
+		{
+			"id":"05032019092000",
+			"services":"Cambio de Discos de Embrague",
+			"reason":"Resbalaban los discos",
+			"start_date":"05/03/2019 10:00",
+			"end_date":"02/01/2019 12:00",
+			"price":"S/. 20.00"
+		}
+	],
+
+	"SERVICES":[
+		{
+			"id":1,
+			"name":"Mantenimiento",
+			"description":"Mantenimiento",
+			"duration":"1 Hora",
+			"approximate_duration":"1 Hora",
+			"price": 20.00
+		},
+		{
+			"id":2,
+			"name":"Cambio de Anillos",
+			"description":"Cambio de Anillos",
+			"duration":"4 Horas",
+			"approximate_duration":"4 Horas",
+			"price": 45.00
+		},
+		{
+			"id":3,
+			"name":"Cambio de Discos de Embrague",
+			"description":"Cambio de Discos de Embrague",
+			"duration":"2 horas",
+			"approximate_duration":"2 horas",
+			"price": 20.00
+		},
+		{
+			"id":4,
+			"name":"Reparación General",
+			"description":"Reparación General",
+			"duration":"8 horas",
+			"approximate_duration":"8 horas",
+			"price": 100.00
+		}
+	],
+
+	"EXTERNAL_SERVICES":[
+		{
+			"id":1,
+			"name":"Cambio de Cableado Eléctrico",
+			"description":"Cambio de Cableado Eléctrico",
+			"approximate_duration":"1 Hora",
+			"category":"Electricista",
+			"price": 20.00
+		},
+		{
+			"id":2,
+			"name":"Cambio de guias de válvulas",
+			"description":"Cambio de guias de válvulas",
+			"approximate_duration":"4 Horas",
+			"category":"Torno",
+			"price": 45.00
+		}
+	],
+
+	"PERSONAL":[
+		{
+			"name":"Juan",
+			"surname":"López",
+			"dni":"12345678",
+			"phone":"939399393",
+			"role":"Administrador",
+			"username":"JLOPEZ"
+		},
+		{
+			"name":"Maria",
+			"surname":"Jimenez",
+			"dni":"87654321",
+			"phone":"933487323",
+			"role":"Técnico",
+			"username":"MJIMENEZ"
+		}
+	],
+	"ROLES":[
+		{
+			"id_role":"R0001",
+			"description":"Gerente"
+		},
+		{
+			"id_role":"R0002",
+			"description":"Maestro Mecánico"
+		},
+		{
+			"id_role":"R0003",
+			"description":"Mecánico"
+		},
+		{
+			"id_role":"R0004",
+			"description":"Practicante"
+		}
+	],
+	"CATEGORIES":[
+		{
+			"id":1,
+			"description":"Electicidad"
+		},
+		{
+			"id":2,
+			"description":"Soldadura"
+		},
+		{
+			"id":3,
+			"description":"Remaches"
+		}
+	],
+	"SPARES":[
+		{
+			"id":1,
+			"name":"Bujia",
+			"brand":"Honda",
+			"price":"S/. 15.00"
+		},
+		{
+			"id":2,
+			"name":"Kit pistón y anillos CG -125 STD",
+			"brand":"Honda",
+			"price":"S/. 45.00"
+		},
+		{
+			"id":3,
+			"name":"Kit empaques cabezal CG - 125",
+			"brand":"JP",
+			"price":"S/. 20.00"
+		}
+	],
+	"BRANDS":[
+		{
+			"id":1,
+			"name":"Honda"
+		},
+		{
+			"id":2,
+			"name":"Kitkol"
+		},
+		{
+			"id":3,
+			"name":"Copillar"
+		}
+	]
+}

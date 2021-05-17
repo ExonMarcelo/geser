@@ -1,0 +1,229 @@
+<core:View xmlns:core="sap.ui.core"
+		   xmlns="sap.uxap"
+		   xmlns:m="sap.m"
+		   xmlns:f="sap.f"
+		   xmlns:l="sap.ui.layout"
+		   xmlns:form="sap.ui.layout.form"
+		   controllerName="com.exonmarcelo.geser.webapp.controller.VehicleDetail"
+		   height="100%"
+>
+<m:Page showHeader="false" id="idPageVehicleDetail" enableScrolling="false">
+	<m:content>
+		<ObjectPageLayout id="ObjectPageLayoutVehicle"
+					  showTitleInHeaderContent="true"
+					  alwaysShowContentHeader="false"
+					  preserveHeaderStateOnScroll="false"
+					  headerContentPinnable="true"
+					  isChildPage="true"
+					  enableLazyLoading="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedContent>
+					<m:VBox>
+						<m:Label text="{mVehicleDetail>/plate}" design="Bold"/>
+						<m:Label text="{mVehicleDetail>/type}" />
+					</m:VBox>
+				</expandedContent>
+
+				<snappedContent>
+					<m:VBox>
+						<m:Label text="{mVehicleDetail>/plate}" design="Bold"/>
+                        <m:Label text="{mVehicleDetail>/type}" />
+					</m:VBox>
+				</snappedContent>
+				
+				<actions>
+					<ObjectPageHeaderActionButton text="{i18n>VehicleDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.1.Text}" type="Emphasized" hideText="false" id="edit" press="onPressEdit" />
+ 					<ObjectPageHeaderActionButton text="{i18n>VehicleDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.2.Text}" type="Emphasized" hideText="false" id="save" press="onPressSave"  />
+					<ObjectPageHeaderActionButton type="Transparent" text="{i18n>VehicleDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.3.Text}" hideText="false" hideIcon="true" id="delete" press="onPressDelete" />
+ 					<ObjectPageHeaderActionButton type="Transparent" text="{i18n>VehicleDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.4.Text}" hideText="false" hideIcon="true" id="cancel" press="onPressCancel" /> 
+				</actions>
+
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<!--<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">-->
+			<m:HBox>
+				<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop"
+						  src="{mVehicleDetail>/image}"
+						  displaySize="L">
+				</f:Avatar>
+
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<m:Label text="{i18n>VehicleDetail.ObjectPageLayout.HeaderContent.VerticalLayout.Label.Text}" design="Bold"/>
+					<m:ObjectAttribute title="{i18n>VehicleDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.ObjectAttribute.1.Title}" text="{mVehicleDetail>/plate}"/>
+					<m:ObjectAttribute title="{i18n>VehicleDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.ObjectAttribute.2.Title}" text="{mVehicleDetail>/brand}"/>
+				</l:VerticalLayout>			
+			</m:HBox>
+			<!--</m:FlexBox>-->
+		</headerContent>
+<!-- fin cabecera -->
+		<sections>
+			<ObjectPageSection id="section1" title="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.Title}">
+				<subSections>
+					<ObjectPageSubSection id="section1_SS1" title=" ">
+						<blocks>
+<!-- inicio block 1 -->						
+							<m:Panel width="auto" class="sapUiResponsiveMargin" id="idPanelFormVehicle" accessibleRole="Region">
+								
+									<form:Form>
+										<form:layout>
+											<form:ResponsiveGridLayout labelSpanXL="4"
+												labelSpanL="4" labelSpanM="4" labelSpanS="4" emptySpanXL="0" emptySpanL="0"
+												emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2"
+												columnsM="2" singleContainerFullSize="true" />
+										</form:layout>
+										<form:formContainers>
+											<form:FormContainer title="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormContainer.Title}" id="idVehicleFormDisplay">
+												<form:formElements>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.1.Label}">
+														<form:fields>
+															<m:Text text="{mVehicleDetail>/plate}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.2.Label}">
+														<form:fields>
+															<m:Text text="{mVehicleDetail>/brand}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.3.Label}">
+														<form:fields>
+															<m:Text text="{mVehicleDetail>/model}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.4.Label}">
+														<form:fields>
+															<m:Text text="{mVehicleDetail>/cylinder}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.5.Label}">
+														<form:fields>
+															<m:Text text="{mVehicleDetail>/type}" />
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+											<!-- Form for edition mode -->
+											<form:FormContainer title="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormContainer.Title}" id="idVehicleFormEdit">
+												<form:formElements>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.1.Label}">
+														<form:fields>
+															<m:Input value="{mVehicleDetail>/plate}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.2.Label}">
+														<form:fields>
+															<m:Input value="{mVehicleDetail>/brand}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.3.Label}">
+														<form:fields>
+															<m:Input value="{mVehicleDetail>/model}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.4.Label}">
+														<form:fields>
+															<m:ComboBox />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.5.Label}">
+														<form:fields>
+															<m:ComboBox />
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+										</form:formContainers>
+									</form:Form>
+								
+							</m:Panel>
+							
+<!-- fin block 1 -->
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<ObjectPageSection id="section4"  title="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.ControlSheets.Title}">
+				<subSections>
+					<ObjectPageSubSection  title="">
+						<blocks>
+						<m:Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+						<m:Toolbar width="100%">
+							<m:Title text="{i18n>Table.Records.Text}" level="H2"/>
+							<m:Title text="(0)" level="H2" id="countControlSheets"/>
+							<m:ToolbarSpacer/>
+							<m:Button
+								tooltip="{i18n>Table.Settings.Text}"
+								icon="sap-icon://action-settings"
+								press="onSettingsTableControlSheets" />
+							<m:Button
+								tooltip="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.ControlSheets.Table.Header.Button.1.Text}"
+								icon="sap-icon://add"
+								press="onNewControlSheet" />
+						</m:Toolbar>	
+
+						<m:Table id="tableControlSheetsOnVehDetail"
+							items="{mCatalogs>/SERVICE_CARDS}"
+							growing="true"
+    						growingThreshold="5"
+							itemPress="onItemPressControlSheets">
+							<m:columns>
+								
+								<m:Column>
+										<m:Text text="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.ControlSheets.Table.Column.1.Text}" />
+									</m:Column>
+								<m:Column
+									minScreenWidth="Phone"
+									demandPopin="true"
+									>
+										<m:Text text="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.ControlSheets.Table.Column.2.Text}" />
+									</m:Column>
+								<m:Column
+									minScreenWidth="Desktop"
+									demandPopin="true"
+									>
+										<m:Text text="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.ControlSheets.Table.Column.3.Text}" />
+									</m:Column>
+								<m:Column
+									minScreenWidth="Desktop"
+									demandPopin="true"
+									>
+										<m:Text text="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.ControlSheets.Table.Column.4.Text}" />
+									</m:Column>
+								<m:Column
+									minScreenWidth="Desktop"
+									demandPopin="true"
+									hAlign="End">
+										<m:Text text="{i18n>VehicleDetail.ObjectPageLayout.Sections.ObjectPageSection.ControlSheets.Table.Column.5.Text}" />
+									</m:Column>
+							</m:columns>
+							<m:items>
+								<m:ColumnListItem type="Navigation">
+									<m:cells>
+										<m:Text text="{mCatalogs>services}" />
+										<m:Text text="{mCatalogs>reason}" />
+										<m:Text text="{mCatalogs>start_date}" />
+										<m:Text text="{mCatalogs>end_date}" />
+										<m:Text text="{mCatalogs>price}" />
+									</m:cells>
+								</m:ColumnListItem>
+							</m:items>
+						</m:Table>
+							
+							</m:Panel>
+
+							
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+		</sections>
+<!-- fin secciones  -->
+	</ObjectPageLayout>
+	</m:content>
+</m:Page>
+	
+</core:View>

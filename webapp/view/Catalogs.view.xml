@@ -1,0 +1,104 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="com.exonmarcelo.geser.webapp.controller.Catalogs" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" id="idPageCatalogs">
+		<content>
+			<!--<core:Fragment fragmentName="com.smch.geser.app.view.fragments.UserBar" type="XML" />-->
+			<!--
+			<FlexBox height="90%"
+				alignItems="Center"
+				justifyContent="Center">
+			<FlexBox 
+				wrap="Wrap"
+				width="747px"
+				>
+					<GenericTile
+						id="idGTUsers"
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Usuarios" subheader="" press="onSelectTile">
+						<TileContent unit="" footer="">
+							<ImageContent src="sap-icon://account" />
+						</TileContent>
+					</GenericTile>
+
+					<GenericTile
+						id="idGTCustomers"
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Clientes"
+						subheader="" press="onSelectTile">
+						<TileContent>
+							<ImageContent src="sap-icon://customer-briefing" />
+						</TileContent>
+					</GenericTile>
+
+					<GenericTile
+						id="idGTVehicles"
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Vehiculos" subheader="" press="onSelectTile">
+						<TileContent unit="" footer="">
+							<ImageContent src="https://image.flaticon.com/icons/png/512/16/16247.png" />
+						</TileContent>
+					</GenericTile>
+					
+					<GenericTile
+						id="idGTPersonal"
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Personal" subheader="" press="onSelectTile">
+						<TileContent unit="" footer="">
+							<ImageContent src="sap-icon://employee-pane" />
+						</TileContent>
+					</GenericTile>
+					
+					<GenericTile
+						id="idGTServices"
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Servicios" subheader="" press="onSelectTile">
+						<TileContent unit="" footer="">
+							<ImageContent src="sap-icon://crm-service-manager" />
+						</TileContent>
+					</GenericTile>
+					
+					<GenericTile
+						id="idGTSparesParts"
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Repuestos" subheader="" press="onSelectTile">
+						<TileContent unit="" footer="">
+							<ImageContent src="sap-icon://product" />
+						</TileContent>
+					</GenericTile>
+			</FlexBox>
+			</FlexBox>
+			-->
+			<TileContainer
+				id="tcCatalogs">
+				<StandardTile
+					icon="sap-icon://account"
+					title="{i18n>Catalogs.StandardTile.1}"/>
+				<StandardTile
+					id="idSTCustomers"
+					press="onSelectTile"
+					icon="sap-icon://customer-briefing"
+					title="{i18n>Catalogs.StandardTile.2}" />
+				<StandardTile
+					id="idSTVehicles"
+					press="onSelectTile"
+					icon="https://image.flaticon.com/icons/svg/1505/1505527.svg"
+					title="{i18n>Catalogs.StandardTile.3}" />
+				<StandardTile
+					id="idSTPersonal"
+					icon="sap-icon://employee-pane"
+					title="{i18n>Catalogs.StandardTile.4}" 
+					press="onSelectTile"/>
+				<StandardTile
+					id="idSTServices"
+					icon="sap-icon://crm-service-manager"
+					title="{i18n>Catalogs.StandardTile.5}" 
+					press="onSelectTile"/>
+				<StandardTile
+					id="idSTSparePart"
+					icon="sap-icon://product"
+					title="{i18n>Catalogs.StandardTile.6}" 
+					press="onSelectTile"/>
+			</TileContainer>
+		</content>
+	</Page>
+</core:View>

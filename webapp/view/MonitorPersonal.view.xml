@@ -1,0 +1,62 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+        xmlns:f="sap.f"
+		controllerName="com.exonmarcelo.geser.webapp.controller.MonitorPersonal" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" id="idPageMonitorPersonal">
+		<content>
+			<Page showHeader="false">
+				<content>
+			<!--<core:Fragment fragmentName="com.smch.geser.app.view.fragments.UserBar" type="XML" /> -->
+			<Table
+				id="idTablePersonal"
+				itemPress="onItemPress"
+				items="{mCatalogs>/PERSONAL}">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>Table.Records.Text}" level="H2"/>
+						<Title text="(0)" id="idCounterPersonal" level="H2"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button icon="sap-icon://provision"  press="onSettingsTablePersonal"></Button>
+						<!--<Button icon="sap-icon://clear-filter"  press="fnCleanFilters"></Button>-->
+						<Button icon="sap-icon://add"  press="onNewEmployee"></Button>
+					</Toolbar>
+					
+				</headerToolbar>
+				<columns>
+								<Column><Text text="{i18n>MonitorPersonal.Table.Column.1}" /></Column>
+								<Column
+									minScreenWidth="Phone"
+									demandPopin="true"><Text text="{i18n>MonitorPersonal.Table.Column.2}" /></Column>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true">
+										<Text text="{i18n>MonitorPersonal.Table.Column.3}" />
+									</Column>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true">
+										<Text text="{i18n>MonitorPersonal.Table.Column.4}" />
+									</Column>
+								<Column
+									minScreenWidth="Phone"
+									demandPopin="true">
+										<Text text="{i18n>MonitorPersonal.Table.Column.5}" />
+									</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Navigation">
+									<cells>
+										<!--<f:Avatar src="{mCatalogs>image}" displaySize="M" />-->
+										<Text text="{mCatalogs>name}" />
+										<Text text="{mCatalogs>surname}" />
+										<Text text="{mCatalogs>dni}" />
+										<Text text="{mCatalogs>phone}" />
+										<Text text="{mCatalogs>role}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+			</Table>
+			</content>
+		</Page>
+		</content>
+	</Page>
+</core:View>

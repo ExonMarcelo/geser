@@ -1,0 +1,306 @@
+<core:View xmlns:core="sap.ui.core"
+		   xmlns="sap.uxap"
+		   xmlns:m="sap.m"
+		   xmlns:f="sap.f"
+		   xmlns:l="sap.ui.layout"
+		   xmlns:form="sap.ui.layout.form"
+		   controllerName="com.exonmarcelo.geser.webapp.controller.CustomerDetail"
+		   height="100%"
+>
+<m:Page showHeader="false" id="idPageCustomerDetail" enableScrolling="false">
+	<m:content>
+		<ObjectPageLayout id="ObjectPageLayoutEmpresa"
+					  showTitleInHeaderContent="true"
+					  alwaysShowContentHeader="false"
+					  preserveHeaderStateOnScroll="false"
+					  headerContentPinnable="true"
+					  isChildPage="true"
+					  enableLazyLoading="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<!--
+				<expandedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:Title text="Cliente" wrapping="true" class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+						
+					</m:FlexBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<f:Avatar src="sap-icon://building" displaySize="S"
+									  class="sapUiTinyMarginEnd"/>
+							<m:Title text="Cliente" wrapping="true" class="sapUiTinyMarginEnd"/>
+						</m:FlexBox>
+						
+					</m:FlexBox>
+				</snappedHeading>
+				-->
+				<expandedContent>
+					<m:VBox>
+						<m:Label text="{i18n>CustomerDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Label.Text}" design="Bold"/>
+						<m:Label text="{mCustomerDetail>/fullname}"/>
+
+					</m:VBox>
+				</expandedContent>
+
+				<snappedContent>
+					<m:VBox>
+						<m:Label text="{i18n>CustomerDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Label.Text}" design="Bold"/>
+						<m:Label text="{mCustomerDetail>/fullname}"/>
+					</m:VBox>
+				</snappedContent>
+				
+				<actions>
+					<ObjectPageHeaderActionButton text="{i18n>CustomerDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.1.Text}" type="Emphasized" hideText="false" id="edit" press="onPressEdit" />
+ 					<ObjectPageHeaderActionButton text="{i18n>CustomerDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.2.Text}" type="Emphasized" hideText="false" id="save" press="onPressSave"  />
+					<ObjectPageHeaderActionButton type="Transparent" text="{i18n>CustomerDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.3.Text}" hideText="false" hideIcon="true" id="delete" press="onPressDelete" />
+ 					<ObjectPageHeaderActionButton type="Transparent" text="{i18n>CustomerDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.4.Text}" hideText="false" hideIcon="true" id="cancel" press="onPressCancel" /> 
+				</actions>
+
+			</ObjectPageDynamicHeaderTitle>
+<!-- 		<ObjectPageHeader objectImageURI="sap-icon://building" -->
+<!-- 							  objectTitle="Denise Smith" -->
+<!-- 							  objectImageShape="Circle" -->
+<!-- 							  objectImageAlt="Denise Smith" -->
+<!-- 							  objectSubtitle="Senior UI Developer" -->
+
+<!-- 							  isObjectIconAlwaysVisible="false" -->
+<!-- 							  isObjectTitleAlwaysVisible="false" -->
+<!-- 							  isObjectSubtitleAlwaysVisible="false"> -->
+<!-- 				<actions> -->
+<!-- 					<ObjectPageHeaderActionButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/> -->
+<!-- 					<ObjectPageHeaderActionButton icon="sap-icon://show" text="show state" type="Emphasized" tooltip="show"/> -->
+					
+<!-- 				</actions> -->
+<!-- 			</ObjectPageHeader> -->
+		</headerTitle>
+
+		<headerContent>
+			<!--<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">-->
+			<m:HBox>
+				<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop"
+						  src="sap-icon://person-placeholder"
+						  displaySize="L">
+				</f:Avatar>
+
+				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
+					<m:Label text="{i18n>CustomerDetail.ObjectPageLayout.HeaderContent.VerticalLayout.Label.Text}" design="Bold"/>
+					<m:ObjectAttribute title="{i18n>CustomerDetail.ObjectPageLayout.HeaderContent.VerticalLayout.ObjectAttribute.1.Text}" text="{mCustomerDetail>/dni}"/>
+					<m:ObjectAttribute title="{i18n>CustomerDetail.ObjectPageLayout.HeaderContent.VerticalLayout.ObjectAttribute.2.Text}" text="{mCustomerDetail>/fullname}"/>
+				</l:VerticalLayout>			
+			</m:HBox>
+			<!--</m:FlexBox>-->
+		</headerContent>
+<!-- fin cabecera -->
+<!-- apartado de las secciones  -->
+		<sections>
+			<ObjectPageSection id="section1" title="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.Title}">
+				<subSections>
+					<ObjectPageSubSection id="section1_SS1" title=" ">
+						<blocks>
+<!-- inicio block 1 -->						
+							<m:Panel width="auto" class="sapUiResponsiveMargin" id="idPanelFormEmpresa" accessibleRole="Region">
+								
+									<form:Form>
+										<form:layout>
+											<form:ResponsiveGridLayout labelSpanXL="4"
+												labelSpanL="4" labelSpanM="4" labelSpanS="12"
+												adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+												emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2"
+												columnsM="2" singleContainerFullSize="true" />
+										</form:layout>
+										<form:formContainers>
+											<form:FormContainer title="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormContainer.Title}" id="idCustomerFormDisplay">
+												<form:formElements>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.1.Label}">
+														<form:fields>
+															<m:Text text="{mCustomerDetail>/dni}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.2.Label}">
+														<form:fields>
+															<m:Text text="{mCustomerDetail>/name}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.3.Label}">
+														<form:fields>
+															<m:Text text="{mCustomerDetail>/surname}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.4.Label}">
+														<form:fields>
+															<m:Text text="{mCustomerDetail>/sex}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.5.Label}">
+														<form:fields>
+															<m:Text text="{mCustomerDetail>/birthdate}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.6.Label}">
+														<form:fields>
+															<m:Text text="{mCustomerDetail>/email}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.7.Label}">
+														<form:fields>
+															<m:Text text="{mCustomerDetail>/phone}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.8.Label}">
+														<form:fields>
+															<m:Text text="{mCustomerDetail>/mobile_phone}" />
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+											<!-- Form for edition mode -->
+											<form:FormContainer title="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormContainer.Title}" id="idCustomerFormEdit">
+												<form:formElements>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.1.Label}">
+														<form:fields>
+															<m:Input value="{mCustomerDetail>/dni}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.2.Label}">
+														<form:fields>
+															<m:Input value="{mCustomerDetail>/name}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.3.Label}">
+														<form:fields>
+															<m:Input value="{mCustomerDetail>/surname}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.4.Label}">
+														<form:fields>
+															<m:ComboBox />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.5.Label}">
+														<form:fields>
+															<m:DatePicker value="{mCustomerDetail>/birthdate}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.6.Label}">
+														<form:fields>
+															<m:Input value="{mCustomerDetail>/email}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.7.Label}">
+														<form:fields>
+															<m:Input value="{mCustomerDetail>/phone}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.8.Label}">
+														<form:fields>
+															<m:Input value="{mCustomerDetail>/mobile_phone}" />
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+										</form:formContainers>
+									</form:Form>
+								
+							</m:Panel>
+							
+<!-- fin block 1 -->
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<!-- Seccion de Asociados -->
+			<ObjectPageSection id="section4"  title="{18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Vehicles.Title}">
+				<subSections>
+					<ObjectPageSubSection  title="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Vehicles.Title}">
+						<blocks>
+						<m:Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+						<m:Toolbar width="100%">
+							<m:Title text="{i18n>Table.Records.Text}" level="H2"/>
+							<m:Title text="(0)" level="H2" id="countVehicles"/>
+							<m:ToolbarSpacer/>
+							<m:SegmentedButton selectedKey="modeImage" selectionChange="onSelectionChangeModeVehicles">
+								<m:items>
+									<m:SegmentedButtonItem icon="sap-icon://background" key="modeImage"/>
+									<m:SegmentedButtonItem icon="sap-icon://table-view" key="modeTable" />
+								</m:items>
+							</m:SegmentedButton>
+							<m:Button
+								tooltip="{i18n>Table.settings.Text}"
+								icon="sap-icon://action-settings"
+								press="onSettingsTableAsociados" />
+							<m:Button
+								tooltip="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Vehicles.Table.Header.Button.1.Text}"
+								icon="sap-icon://add"
+								press="onNewVehicle" />
+						</m:Toolbar>	
+
+						<m:Table id="tableVehiclesOnCustDetail"
+							items="{mCatalogs>/VEHICLES}"
+							growing="true"
+    						growingThreshold="5"
+							itemPress="onItemPressAsociados">
+							<!--<m:headerToolbar>
+								<m:Toolbar>
+									<m:ToolbarSpacer/>
+									<m:Button
+										tooltip="{i18n>Catalogos.MonitorEmpleado.Table.Header.Button.1.Tooltip}"
+										icon="sap-icon://action-settings"
+										press="onSettingsTableAsociados" />
+								</m:Toolbar>
+							</m:headerToolbar>-->
+							<m:columns>
+								<m:Column width="12em">
+									<m:Text text="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Vehicles.Table.Column.1.Text}" />
+								</m:Column>
+								<m:Column
+									minScreenWidth="Tablet"
+									demandPopin="true"
+									hAlign="End">
+									<m:Text text="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Vehicles.Table.Column.2.Text}" />
+								</m:Column>
+								<m:Column
+									minScreenWidth="Phone"
+									demandPopin="true"
+									hAlign="End">
+									<m:Text text="{i18n>CustomerDetail.ObjectPageLayout.Sections.ObjectPageSection.Vehicles.Table.Column.3.Text}" />
+								</m:Column>
+							</m:columns>
+							<m:items>
+								<m:ColumnListItem type="Navigation">
+									<m:cells>
+										<!--<m:VBox alignItems="Center" class="emjMarginBottom10">
+											<m:items>-->
+												<f:Avatar src="{mCatalogs>image}"
+													displaySize="M" />
+												
+												<!--m:Text text="{mCatalogs>plate}" />
+											</m:items>
+										</m:VBox>-->
+										<!--<m:ObjectIdentifier title="{mCatalogs>plate}" text="{mCatalogs>plate}" />-->
+										<m:Text text="{mCatalogs>brand}" />
+										<m:Text text="{mCatalogs>cylinder}" />
+									</m:cells>
+								</m:ColumnListItem>
+							</m:items>
+						</m:Table>
+							<l:Grid defaultSpan="XL2 L3 M6 S6" id="gridImgsVehicles">
+							</l:Grid>
+							</m:Panel>
+
+							
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<!-- Fin Seccion de Asociados -->
+			
+		</sections>
+<!-- fin secciones  -->
+	</ObjectPageLayout>
+	</m:content>
+</m:Page>
+	
+</core:View>

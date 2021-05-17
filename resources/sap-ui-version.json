@@ -1,0 +1,32 @@
+{
+	"name": "geser_uimodule",
+	"version": "0.0.1",
+	"buildTimestamp": "202105171150",
+	"scmRevision": "",
+	"libraries": [
+		{
+			"name": "sap.m",
+			"version": "1.84.0",
+			"buildTimestamp": "202105171150",
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.ui.core",
+			"version": "1.84.0",
+			"buildTimestamp": "202105171150",
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.ui.layout",
+			"version": "1.84.0",
+			"buildTimestamp": "202105171150",
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.ui.unified",
+			"version": "1.84.0",
+			"buildTimestamp": "202105171150",
+			"scmRevision": ""
+		}
+	]
+}

@@ -1,0 +1,33 @@
+<mvc:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+	controllerName="com.exonmarcelo.geser.webapp.controller.Login"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	
+			<Page showHeader="false" enableScrolling="false" class="colorToolPage">
+				<content>
+					<VBox height="100%" alignItems="Center" justifyContent="Center">
+						
+						<form:SimpleForm
+							maxContainerCols="1" editable="true" layout="ResponsiveGridLayout"
+							labelSpanL="4" labelSpanM="2" emptySpanL="1" emptySpanM="1"
+							columnsL="1" columnsM="1" class="formLogin">
+							<form:content>
+								<VBox alignItems="Center" justifyContent="Center">
+									<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop"
+										src="https://image.flaticon.com/icons/svg/1672/1672675.svg"
+										displaySize="S">
+									</f:Avatar>
+									<Title text="{i18n>Login.Form.Title}" class="paddingTop3px"></Title>
+								</VBox>
+								<Input value="" placeholder="{i18n>Login.Form.Input.1.Text}" />
+								<Input type="Password" value="" placeholder="{i18n>Login.Form.Input.2.Text}" />
+								<Button text="{i18n>Login.Form.Button.1.Text}" press="onPressLogin" type="Emphasized" />
+							</form:content>
+						</form:SimpleForm>
+					</VBox>
+					
+				</content>
+			</Page>
+</mvc:View>

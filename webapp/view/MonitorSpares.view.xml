@@ -1,0 +1,52 @@
+<core:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:f="sap.f" controllerName="com.exonmarcelo.geser.webapp.controller.MonitorSpares" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" id="idPageMonitorSpares">
+		<content>
+			<Page showHeader="false">
+				<content>
+					<Table id="idTableSpares" items="{mCatalogs>/SPARES}">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>Table.Records.Text}" level="H2"/>
+								<Title text="(0)" id="idCounterSpares" level="H2"/>
+								<ToolbarSpacer></ToolbarSpacer>
+								<Button icon="sap-icon://provision" press="onSettingsTableSpares"></Button>
+								<!--<Button icon="sap-icon://clear-filter" press="fnCleanFilters"></Button>-->
+								<Button icon="sap-icon://add" press="onNewSpare"></Button>
+							</Toolbar>
+
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="{i18n>MonitorSpares.Table.InternalSpares.Column.1}" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>MonitorSpares.Table.InternalSpares.Column.2}" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>MonitorSpares.Table.InternalSpares.Column.3}" />
+							</Column>
+							<Column minScreenWidth="Phone" demandPopin="true" hAlign="End">
+								<Text text="{i18n>MonitorSpares.Table.InternalSpares.Column.4}" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Link text="{mCatalogs>name}" press="onPressEditSpare"/>
+									<Text text="{mCatalogs>brand}" />
+									<Text text="{mCatalogs>price}" />
+									<Button icon="sap-icon://delete" press="onPressDeleteSpare" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+
+				</content>
+			</Page>
+		</content>
+	</Page>
+</core:View>

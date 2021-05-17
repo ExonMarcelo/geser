@@ -1,0 +1,92 @@
+/* Enter your custom styles here */
+/*.sapMListHdrText {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    font-size: 1.125rem;
+    font-family: "72",Arial,Helvetica,sans-serif;
+    color: #333333;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    background-color: white !important;
+    border-bottom: 1px solid #cccccc;
+}
+
+.sapMList {
+    position: relative;
+    box-sizing: border-box;
+    margin-top: 10px !important;
+}
+*/
+#ViewMain--listMonitoringServices-header{
+    background-color: white !important;
+}
+
+#ViewMain--plaCalServiceAppointments{
+    margin-top: 10px !important;
+}
+#ViewMain--toolbarMonitoringServices{
+    background-color: white !important;
+}
+
+#ViewMain--titleToolbarMonitoringServices{
+    margin-left: 1rem !important;
+}
+
+/*div > #ObjHearderMonitoring {
+    height: auto !important;
+}*/
+.sapMOHR {
+    width: 100%;
+    height: auto !important;
+    padding: 1.1rem 3rem 0 3rem;
+    box-sizing: border-box;
+}
+.sapMLIBImgNav {
+    width: 3rem;
+    font-size: 0.75rem;
+    color: #2f3c48 !important;
+    line-height: inherit !important;
+}
+
+.emjMarginBottom10{
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+}
+
+#ViewCustomerDetail--gridImgsVehicles{
+    background: white !important;
+}
+
+.sapMPanel {
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    background: white !important;
+}
+
+.sapMStdTileTopRow {
+    height: 4rem;
+    padding: 1rem 1rem 0 1rem;
+    margin-bottom: 1rem;
+    background: #eff4fb !important;
+}
+
+.formLogin {
+    background: white !important;
+    border-radius: 0.5rem !important;
+}
+
+.colorToolPage {
+    background: #2f3c48 !important;
+}
+
+.paddingTop3px {
+    padding-top: 3px !important;
+}
+
+#ViewMain--idObjHeaderPrincipal > div{
+    background-color:white !important;
+}
