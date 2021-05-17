@@ -1,0 +1,154 @@
+{
+    "STATUS_SERVICES":[
+        {
+            "id_status_service":1,
+            "order_number":1,
+            "description":"Internado"
+        },
+        {
+            "id_status_service":2,
+            "order_number":2,
+            "description":"En Desamblado"
+        },
+        {
+            "id_status_service":3,
+            "order_number":3,
+            "description":"En Revisión"
+        },
+        {
+            "id_status_service":4,
+            "order_number":4,
+            "description":"En Servicios Externos"
+        },
+        {
+            "id_status_service":5,
+            "order_number":5,
+            "description":"En Ensamblado"
+        },
+        {
+            "id_status_service":6,
+            "order_number":6,
+            "description":"En Pruebas Técnicas"
+        },
+        {
+            "id_status_service":7,
+            "order_number":7,
+            "description":"Terminado"
+        }
+    ],
+    "SPARE_PARTS":[
+        {
+            "id_spare_parts":1,
+            "description":"Anillos JP",
+            "brand":"Honda",
+            "price":"50.00",
+            "observation":"",
+            "image":"https://lh5.googleusercontent.com/proxy/bmM86Xu3nc6wSxupR9ed8j0cJQaozmE7acbj9Ql6fV-t3FyqtFlGrITxYINWVsTT_X7ExiIAqgr1ew6TD3GKnE-_vIaRVDnuUokFH6kYe7xR4jfBAdon1MGKbMQ3YgqNWExQNFVXoQTG4AC9bKThww=w1200-h630-p-k-no-nu"
+
+        },
+        {
+            "id_spare_parts":2,
+            "description":"Empaquetaduras cabezal CG-125",
+            "brand":"Honda",
+            "price":"30.00",
+            "observation":"",
+            "image":"https://http2.mlstatic.com/juntas-medio-motor-ne-para-honda-cg125-today-titan-95-99-D_NQ_NP_733330-MLA26423737586_112017-Q.jpg"
+        },
+        {
+            "id_spare_parts":3,
+            "description":"Válvula de Adminsión CG-125",
+            "brand":"Honda",
+            "price":"25.00",
+            "observation":"",
+            "image":"https://http2.mlstatic.com/valvula-de-admision-honda-cg-125-t2000-vast-5mm-japon-fas-D_NQ_NP_422505-MLA25011860569_082016-F.jpg"
+        },
+        {
+            "id_spare_parts":4,
+            "description":"Válvula de Escape CG-125",
+            "brand":"Honda",
+            "price":"25.00",
+            "observation":"",
+            "image":"https://www.fraida.com.br/imagens/produtos/pro2401.jpg"
+        },
+        {
+            "id_spare_parts":5,
+            "description":"Bujía",
+            "brand":"Honda",
+            "price":"10.00",
+            "observation":"",
+            "image":"https://http2.mlstatic.com/bujia-cg125-xr125-rx150-altino-ngk-varillero-japon-bj-D_NQ_NP_712777-MLA29760837066_032019-Q.jpg"
+        }
+    ],
+    "LATHE_SERVICES":[
+        {
+            "id_lathe_service":1,
+            "description":"Rectifación de Cilindro",
+            "price":"90.00"
+        },
+        {
+            "id_lathe_service":2,
+            "description":"Guias de Válvulas",
+            "price":"50.00"
+        },
+        {
+            "id_lathe_service":3,
+            "description":"Cambio de Biela",
+            "price":"100.00"
+        }
+    ],
+    "LATHE_WORKSHOPS":[
+        {
+            "id_lathe_workshop":1,
+            "name":"Torno 'Siancas'",
+            "owner":"Jorge Siancas",
+            "address":"Av. Las Lomas 123 - Sta teresita - Sullana"
+        },
+        {
+            "id_lathe_workshop":2,
+            "name":"Campos VID",
+            "owner":"Kevin Campos",
+            "address":"Av. Buenos Aires 345 - El Obrero - Sullana"
+        },
+        {
+            "id_lathe_workshop":3,
+            "name":"Torno 'Fredy'",
+            "owner":"Fredy Valverde",
+            "address":"Av. Circunvalacion 103 - Nueve de Octubre - Sullana"
+        }
+    ],
+    "EXTERNAL_SERVICES":[
+        {
+            "id_external_service":1,
+            "description":"Ramachado de monodisco",
+            "price":"90.00",
+            "category":"Remachados"
+        },
+        {
+            "id_external_service":2,
+            "description":"Cambio de alambrado eléctrico",
+            "price":"50.00",
+            "category":"Electricidad"
+        },
+        {
+            "id_external_service":3,
+            "description":"Limpieza de tubo escape",
+            "price":"100.00",
+            "category":"Soldadura"
+        }
+    ],
+    "EXTERNAL_WORKSHOPS":[
+        {
+            "id_external_workshop":1,
+            "name":"Taller 'Chino Chero'",
+            "owner":"Victor Chero Ramos",
+            "address":"Av. Buenos Aires 567 - Nueve de Octubre - Sullana",
+            "category":"Electrecidad"
+        },
+        {
+            "id_external_workshop":2,
+            "name":"Remaches 'HUELE'",
+            "owner":"Juan Rodrigues Domingues",
+            "address":"Av. Buenos Aires 345 - El Obrero - Sullana"
+        }
+    ]
+}

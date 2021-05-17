@@ -1,0 +1,58 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="com.exonmarcelo.geser.webapp.controller.MonitorCustomers" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" id="idPageMonitorCustomers">
+		<content>
+			<Page showHeader="false">
+				<content>
+			<!--<core:Fragment fragmentName="com.smch.geser.app.view.fragments.UserBar" type="XML" /> -->
+			<Table
+				id="idTableCustomers"
+				itemPress="onItemPress"
+				items="{mCatalogs>/CUSTOMERS}">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>Table.Records.Text}" level="H2"/>
+						<Title text="(0)" id="idCounterCustomers" level="H2"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button icon="sap-icon://provision"  press="onSettingsTableCustomers"></Button>
+						<!--<Button icon="sap-icon://clear-filter"  press="fnCleanFilters"></Button>-->
+						<Button icon="sap-icon://add"  press="fnNewCustomer"></Button>
+					</Toolbar>
+					
+				</headerToolbar>
+				<columns>
+					<Column
+						width="12em">
+						<Text text="{i18n>MonitorCustomers.Table.Column.1}" />
+					</Column>
+					<Column
+						minScreenWidth="Tablet"
+						demandPopin="true">
+						<Text text="{i18n>MonitorCustomers.Table.Column.2}" />
+					</Column>
+					<Column
+						hAlign="End">
+						<Text text="{i18n>MonitorCustomers.Table.Column.3}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation">
+						<cells>
+							<Title
+								text="{mCatalogs>dni}" />
+							
+							<Text
+								text="{mCatalogs>name}" />
+							
+							<Text
+								text="{mCatalogs>surname}" />
+							
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			</content>
+		</Page>
+		</content>
+	</Page>
+</core:View>

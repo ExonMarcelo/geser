@@ -1,0 +1,103 @@
+<core:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:f="sap.f" controllerName="com.exonmarcelo.geser.webapp.controller.MonitorServices" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" id="idPageMonitorServices">
+		<content>
+			<Page showHeader="false">
+				<content>
+					<IconTabBar id="idIconTabBarServices" expanded="true" class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter id="itfServices" icon="sap-icon://building" text="{i18n>MonitorServices.IconTabBar.IconTabFilter.1.Text}">
+								<Table id="idTableServices" items="{mCatalogs>/SERVICES}">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{i18n>Table.Records.Text}" level="H2"/>
+											<Title text="(0)" id="idCounterServices" level="H2"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<Button icon="sap-icon://provision" press="onSettingsTableServices"></Button>
+											<!--<Button icon="sap-icon://clear-filter" press="fnCleanFilters"></Button>-->
+											<Button icon="sap-icon://add" press="onNewInternalService"></Button>
+										</Toolbar>
+
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="{i18n>MonitorServices.Table.InternalServices.Column.1}" />
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="{i18n>MonitorServices.Table.InternalServices.Column.2}" />
+										</Column>
+										<Column minScreenWidth="Tablet" demandPopin="true">
+											<Text text="{i18n>MonitorServices.Table.InternalServices.Column.3}" />
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="{i18n>MonitorServices.Table.InternalServices.Column.4}" />
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<!--<f:Avatar src="{mCatalogs>image}" displaySize="M" />-->
+												<Link text="{mCatalogs>name}" press="onPressEditInternalService"/>
+												<Text text="{mCatalogs>description}" />
+												<Text text="{mCatalogs>price}" />
+												<Text text="{mCatalogs>approximate_duration}" />
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<!-- External Services-->
+							<IconTabFilter id="itfExternalServices" icon="sap-icon://offsite-work" text="{i18n>MonitorServices.IconTabBar.IconTabFilter.2.Text}">
+								<Table id="idTableExternalServices" items="{mCatalogs>/EXTERNAL_SERVICES}">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{i18n>Table.Records.Text}" level="H2"/>
+											<Title text="(0)" id="idCounterExternalServices" level="H2"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<Button icon="sap-icon://provision" press="onSettingsTableExternalServices"></Button>
+											<!--<Button icon="sap-icon://clear-filter" press="fnCleanFilters"></Button>-->
+											<Button icon="sap-icon://add" press="onNewExternalService"></Button>
+										</Toolbar>
+
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="{i18n>MonitorServices.Table.ExternalServices.Column.1}" />
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="{i18n>MonitorServices.Table.ExternalServices.Column.2}" />
+										</Column>
+										<Column minScreenWidth="Tablet" demandPopin="true">
+											<Text text="{i18n>MonitorServices.Table.ExternalServices.Column.3}" />
+										</Column>
+										<Column minScreenWidth="Tablet" demandPopin="true">
+											<Text text="{i18n>MonitorServices.Table.ExternalServices.Column.4}" />
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="{i18n>MonitorServices.Table.ExternalServices.Column.5}" />
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<!--<f:Avatar src="{mCatalogs>image}" displaySize="M" />-->
+												<Link text="{mCatalogs>name}" press="onPressEditExternalService"/>
+												<Text text="{mCatalogs>description}" />
+												<Text text="{mCatalogs>price}" />
+												<Text text="{mCatalogs>approximate_duration}" />
+												<Text text="{mCatalogs>category}" />
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</content>
+	</Page>
+</core:View>

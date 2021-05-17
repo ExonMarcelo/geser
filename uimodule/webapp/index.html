@@ -1,32 +1,328 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="/resources/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="UTF-8">
 
-        <title>geser</title>
+    <title>GESER</title>
+	<!-- ../openui5_sdk/resources/sap-ui-core.js -->
+	<!--themes: sap_fiori_3 sap_belize sap_belize_plus-->
+    <script id="sap-ui-bootstrap"
+        src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m, sap.tnt, sap.ui.layout, sap.f, sap.uxap, sap.ui.ux3"
+        data-sap-ui-theme="sap_belize"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-preload="async"
+        data-sap-ui-language="es"
+        data-sap-ui-resourceroots='{"com.exonmarcelo.geser.webapp": "./webapp"}'>
+    </script>
+	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <script>
 
-        <script
-            id="sap-ui-bootstrap"
-            src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
-            data-sap-ui-theme="sap_fiori_3"
-            data-sap-ui-resourceroots='{
-        "com.exonmarcelo.geser": "./"
-      }'
-            data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
-            data-sap-ui-compatVersion="edge"
-            data-sap-ui-async="true"
-            data-sap-ui-frameOptions="trusted"
-        ></script>
-    </head>
+	    /*jQuery.sap.require('com.smch.geser.util.File1');
+	    jQuery.sap.require('sap.ui.core.mvc.XMLView');
+        */
+		sap.ui.localResources("public/util");
+		sap.ui.localResources("public/controls/Filters");
 
-    <body class="sapUiBody">
-        <div
-            data-sap-ui-component
-            data-name="com.exonmarcelo.geser"
-            data-id="container"
-            data-settings='{"id" : "geser"}'
-        ></div>
-    </body>
-</html>
+		jQuery.sap.require('public.util.Formatter');
+		jQuery.sap.require('public.util.utils');
+		jQuery.sap.require('public.controls.Filters.P13nConditionPanelVRD');
+		jQuery.sap.require('public.controls.Filters.P13nFilterPanelVRD');
+
+        sap.ui.getCore().attachInit(function(){
+            
+            var sideNavigation = new sap.tnt.SideNavigation("idSideNav",{
+				expanded: true,
+				itemSelect: function(oEvt){
+						var item= oEvt.getParameter('item');
+						var router = oComponent.getRouter(); //se declara en Component.js
+						//var sesion = sap.ui.getCore().User.Sesion;
+						
+						switch (item.getKey()) {
+							case "menuMonitoringServices":
+								router.navTo("MonitoringServices",{},false);
+								break;
+							case "menuAppointments":
+								router.navTo("MonitorAppointments",{},false);
+								break;
+							case "menuControlSheets":
+								
+								break;
+							case "menuCatalogs":
+								router.navTo("Catalogs",{},false);
+								break;
+							case "menuProformas":
+								
+								break;
+							case "menuFeedback":
+								
+								break;
+						
+							default:
+								return;
+								break;
+						}
+						
+						toolPage.setSideExpanded(false);
+					},
+					item: new sap.tnt.NavigationList("idNavigationListMaster",{
+						expanded: true,
+						items:[
+														
+							
+							new sap.tnt.NavigationListItem({
+								text: '{i18n>ToolPage.SideContent.SideNavigation.Item.NavigationList.NavigationListItem.1}',
+								icon: 'sap-icon://workflow-tasks',
+								key: 'menuMonitoringServices',
+								expanded: true
+							}),
+
+							new sap.tnt.NavigationListItem({
+								text: '{i18n>ToolPage.SideContent.SideNavigation.Item.NavigationList.NavigationListItem.2}',
+								icon: 'sap-icon://switch-views',
+								key: 'menuAppointments',
+								expanded: true
+							}),
+							
+							new sap.tnt.NavigationListItem({
+								text: '{i18n>ToolPage.SideContent.SideNavigation.Item.NavigationList.NavigationListItem.3}',
+								icon: 'sap-icon://activity-2',
+								key: 'menuControlSheets',
+								expanded: true
+							}),
+							
+							new sap.tnt.NavigationListItem({
+								text: '{i18n>ToolPage.SideContent.SideNavigation.Item.NavigationList.NavigationListItem.4}',
+								icon: 'sap-icon://database',
+								key: 'menuCatalogs',
+								expanded: true
+							}),
+							
+							new sap.tnt.NavigationListItem({
+								text: '{i18n>ToolPage.SideContent.SideNavigation.Item.NavigationList.NavigationListItem.5}',
+								icon: 'sap-icon://payment-approval',
+								key: 'menuProformas',
+								expanded: true
+							}),
+							
+						]
+					}).attachItemSelect(function(oEvt) {
+						var oSelectedItem = oEvt.getParameter("item");
+						var oExpanded = oSelectedItem.getExpanded();
+						if(oExpanded === false) {
+							var oNavigationList = oEvt.getSource();
+				            var oItems = oNavigationList.getItems();
+				            for (var i = 0; i < oItems.length; i++) {
+				            	oItems[i].collapse();
+				            }
+				            oSelectedItem.expand();
+				        }
+	            	}).addEventDelegate({
+						onAfterRendering: function(oEvt) {
+							var oItems = oEvt.srcControl.getItems();
+				            for (var i = 1; i < oItems.length; i++) {
+				            	oItems[i].collapse();
+				            }
+				            for (var i = 0; i < oItems.length; i++) {
+				            	var oIconControl = oItems[i].getAggregation("_expandIconControl");
+				            	
+				            	if(oIconControl==null) return;
+				            	
+				            	oIconControl.attachPress(function(oEvent) {
+					                var oSelectedItem = oEvent.getSource().getParent();
+					                var oExpanded = oSelectedItem.getExpanded();
+					                if (oExpanded === false) {
+					                	var oNavigationList = oEvent.getSource().getParent().getParent();
+					                	var oItems = oNavigationList.getItems();
+					                	for (var i = 0; i < oItems.length; i++) {
+					                		oItems[i].collapse();
+					                	}
+					                	oSelectedItem.collapse();
+					                }
+				            	});
+				            }
+						}
+					}, this),
+					fixedItem: new sap.tnt.NavigationList({
+						items: [
+							new sap.tnt.NavigationListItem({
+								text: '{i18n>ToolPage.SideContent.SideNavigation.FixedItem.NavigationList.NavigationListItem.2}',//Acerca de
+								icon: 'sap-icon://message-popup',
+								key: 'menuFeedback'
+							})
+						]
+					}).attachItemSelect(function(oEvt) {
+						var oSelectedItem = oEvt.getParameter("item");
+						var oExpanded = oSelectedItem.getExpanded();
+						if(oExpanded === false) {
+							var oNavigationList = oEvt.getSource();
+				            var oItems = oNavigationList.getItems();
+				            for (var i = 0; i < oItems.length; i++) {
+				            	oItems[i].collapse();
+				            }
+				            oSelectedItem.expand();
+				        }
+	            	})
+				});
+			// bar titulos e iconos 
+			var toolPage = new sap.tnt.ToolPage("TntToolPage",{
+				sideExpanded : false,
+				header : new sap.tnt.ToolHeader({ content: [
+					new sap.m.Button("btnMenu",{
+						icon: "sap-icon://menu2",
+						layoutData: new sap.m.OverflowToolbarLayoutData({
+							priority: "NeverOverflow",
+							//minWidth:"20px"
+						}),
+						press: function() {
+							var sideExpanded = toolPage.getSideExpanded();
+							toolPage.setSideExpanded(!toolPage.getSideExpanded());
+						},
+						type:"Transparent"
+					}),
+					new sap.m.Button("btnBack",{
+						visible: false,
+						icon: "sap-icon://nav-back",
+						layoutData: new sap.m.OverflowToolbarLayoutData({
+							priority: "NeverOverflow"
+						}),
+						press: function() {
+							window.history.go(-1);
+							/*var sPreviousHash = History.getInstance().getPreviousHash();
+							//The history contains a previous entry
+							if (sPreviousHash !== undefined) {
+								window.history.go(-1);
+							} else {
+								// There is no history!
+								// replace the current hash with page 1 (will not add an history entry)
+								this.getOwnerComponent().getRouter().navTo("Main", null, true);
+							}*/
+						},
+						type:"Transparent"
+					}),
+					new sap.m.Button("btnHome",{
+						visible: false,
+						icon: "sap-icon://home",
+						layoutData: new sap.m.OverflowToolbarLayoutData({
+							priority: "NeverOverflow"
+						}),
+						press: function() {
+							//var router = sap.ui.core.UIComponent.getRouterFor(oCtrl_Home);
+							var router = oComponent.getRouter();						 
+							router.navTo("Main");
+							/*var sesion = sap.ui.getCore().User.Sesion;
+							if(sesion){
+
+								var router = oComponent.getRouter();						 
+								router.navTo("Main");
+							}*/
+						},
+						type:"Transparent"
+					}),
+					new sap.m.Title("titleApp", {text:"{i18n>ToolPage.Header.ToolHeader.Title}",textAlign:"Center"}),
+					new sap.m.ToolbarSpacer(),
+
+					new sap.m.Button("btnUser",{
+						visible: false,
+						icon: "sap-icon://account",
+						text:"{mUser>/user}",
+						press: function(oEvt) {
+							var oPopover = new sap.m.ResponsivePopover({
+								title:"{i18n>ResponsivePopover.Title}",
+								class:"sapUiPopupWithPadding",
+								placement:"Bottom",
+								content:[
+									new sap.m.VBox({
+										alignItems:"Center",
+										items:[
+											new sap.m.Text({text:""}),
+											new sap.f.Avatar({
+												src:"https://scontent.flim6-1.fna.fbcdn.net/v/t1.0-9/40656189_2354361037937271_9031937334358048768_n.jpg?_nc_cat=103&_nc_eui2=AeGM9D-DJt1Q4sUAJI_CSu5z9zXTm6hHadVXPTwETzZEs9gVarHfGRtkfRAEPj9NhPqPqitD9tTwLmaB6E0fl-MDEFoJ1CWHToDIY9qAcPDnEQ&_nc_ht=scontent.flim6-1.fna&oh=fa13c470227b86691602f8b191f9484a&oe=5D09BEC4",
+												displaySize:"XL",
+												displayShape:"Circle"
+											}),
+											new sap.m.Text({text:"{mUser>/full_name}"})
+										]
+									}),
+									new sap.ui.layout.form.SimpleForm({
+										editable : true,
+										//layout : "ResponsiveGridLayout",
+										adjustLabelSpan:false,
+										labelSpanXL:2,
+										labelSpanL:2,
+										labelSpanM:2,
+										labelSpanS:5,
+										content : [
+											new sap.m.Label({text:"{i18n>ResponsivePopover.Label.Role}"}),
+											new sap.m.Text({text:"{mUser>/role}"}),
+											new sap.m.Label({text:"{i18n>ResponsivePopover.Label.LastSession}"}),
+											new sap.m.Text({text:"{mUser>/last_session}"})
+										]
+									}) 
+								],
+								beginButton: new sap.m.Button({
+									text:"{i18n>ResponsivePopover.Button.1}",
+									icon:"sap-icon://message-information",
+									press:function(oEvt){
+										console.log("Show a information dialog");
+									}
+								}),
+								endButton: new sap.m.Button({
+									text:"{i18n>ResponsivePopover.Button.2}",
+									icon:"sap-icon://log",
+									press:function(oEvt){
+										console.log("close session");
+									}
+								})
+
+							});
+
+							oPopover.openBy(oEvt.getSource());
+										
+						},
+						type:"Transparent"
+					})
+				]}),
+				sideContent: sideNavigation
+			});
+			
+			toolPage.placeAt("content");
+
+            var pContainer = new sap.ui.core.ComponentContainer({
+                        name : "com.exonmarcelo.geser.webapp"
+                    });
+            
+            var oRouter = new sap.ui.core.routing.Router();
+            oRouter.addRoute({
+				pattern: "",
+				name: "_home",
+				callback: function() {
+					
+                    toolPage.removeAllMainContents();
+				    toolPage.addMainContent(pContainer);
+				}
+            });
+            
+            //oToolpage.placeAt("content");
+
+            oRouter.register("app");
+			oRouter.initialize();
+
+			var sLangu = sap.ui.getCore().getConfiguration().getLanguage().toLowerCase(); // "es-Es";  idioma espaÃ±ol
+			sLangu = sLangu.split("-")[0];
+			//recursos del modelo
+			oI18nModel = new sap.ui.model.resource.ResourceModel({
+				bundleUrl : "public/i18n/i18n.properties",
+				bundleLocale: sLangu
+			});
+			sap.ui.getCore().setModel(oI18nModel,"i18n");
+		});
+	</script>
+	<script src="public/js/filters.js"></script>
+	<script src="public/js/filtersItems.js"></script>
+	<!--
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	-->
+</head>
+
+<body class="sapUiBody" id="content">
+</body>

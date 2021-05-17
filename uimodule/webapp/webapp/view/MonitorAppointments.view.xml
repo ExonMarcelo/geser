@@ -1,0 +1,91 @@
+<core:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:tnt="sap.tnt" 
+	xmlns:unified="sap.ui.unified" controllerName="com.exonmarcelo.geser.webapp.controller.MonitorAppointments" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" id="idPageMonitorAppointments">
+		<content>
+			<Page>
+				<customHeader>
+					<Toolbar>
+						<Title text="{i18n>Table.Records.Text}" level="H2"/>
+						<Title text="(0)" id="idCounterAppointments" level="H2"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<SegmentedButton selectedKey="modePlaCal" selectionChange="onSelectionChangeModeAppointments">
+							<items>
+								<SegmentedButtonItem icon="sap-icon://accelerated" key="modePlaCal"/>
+								<SegmentedButtonItem icon="sap-icon://table-view" key="modeTable" />
+							</items>
+						</SegmentedButton>
+						<Button icon="sap-icon://provision" press="onSettingsTableAppointments"></Button>
+
+						<Button icon="sap-icon://add" press="fnNewAppointment"></Button>
+					</Toolbar>
+				</customHeader>
+				<content>
+
+					<!--<core:Fragment fragmentName="com.smch.geser.app.view.fragments.UserBar" type="XML" /> -->
+					<!-- type="{mMonitor>type}" -->
+					<PlanningCalendar id="idPlaCalAppointments" rows="{path: 'mMonitor>/DATA_APOINTMENTS'}" appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" showWeekNumbers="false" showRowHeaders="false">
+						<rows>
+							<PlanningCalendarRow appointments="{path : 'mMonitor>/DATA_APOINTMENTS/0/APPOINTMENTS', templateShareable: 'true'}">
+								<appointments>
+									<unified:CalendarAppointment 
+									startDate="{path:'mMonitor>start_pc', formatter:'util.Formatter.dateInFormatJS'}" 
+									endDate="{path:'mMonitor>end_pc', formatter:'util.Formatter.dateInFormatJS'}" 
+									title="{mMonitor>plate} - {mMonitor>owner}" 
+									text="{path:'mMonitor>services', formatter:'util.Formatter.listServicesInList'}" 
+									color="{path:'mMonitor>status', formatter:'util.Formatter.serviceStateColor'}"
+									icon="{mMonitor>img}"
+									tentative="{mMonitor>tentative}">
+									</unified:CalendarAppointment>
+								</appointments>
+							</PlanningCalendarRow>
+						</rows>
+					</PlanningCalendar>
+
+					<Table id="idTableAppointments" itemPress="onItemPress" items="{mMonitor>/DATA_APOINTMENTS/0/APPOINTMENTS}">
+						<columns>
+							<Column width="12em">
+								<Text text="{i18n>MonitorAppointments.Table.Column.2}" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>MonitorAppointments.Table.Column.1}" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>MonitorAppointments.Table.Column.3}" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>MonitorAppointments.Table.Column.4}" />
+							</Column>
+							<Column minScreenWidth="Phone" demandPopin="true" hAlign="End">
+								<Text text="{i18n>MonitorAppointments.Table.Column.5}" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation">
+								<cells>
+									<!--<ObjectIdentifier title="{mMonitor>title}" />-->
+									<Text text="{mMonitor>plate}" />
+									<Text text="{path:'mMonitor>services',  formatter:'util.Formatter.listServicesInColumn'}" />
+									<Text text="{mMonitor>owner}" />
+									<Text text="{mMonitor>start}" />
+									<tnt:InfoLabel text="{mMonitor>status}" displayOnly="true" 
+										colorScheme= "{
+											parts: [
+												{path: 'mMonitor>status'}
+											],
+											formatter: 'util.Formatter.serviceState'
+										}"
+									/>
+									<!--<Text text="{mMonitor>status}" />-->
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</content>
+	</Page>
+</core:View>

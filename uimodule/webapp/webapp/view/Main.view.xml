@@ -1,0 +1,310 @@
+<mvc:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:unified="sap.ui.unified" 
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m" 
+	xmlns:f="sap.f"
+	controllerName="com.exonmarcelo.geser.webapp.controller.Main" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" enableScrolling="true">
+		<content>
+		<!--<ObjectHeader
+			id="idObjHeaderPrincipal"
+			icon="sap-icon://technical-object"
+			iconDensityAware="false"
+			iconAlt="Servis Moto Chivirico"
+			imageShape="Circle"
+			responsive="true"
+			title="Servis Moto 'Chivirico'"
+			intro="La satifacción de nuestros clientes, es primero!!" >
+			<attributes>
+				<ObjectAttribute title="Propietario" text="Exon Oswaldo Marcelo Chero"/>
+				<ObjectAttribute title="Teléfono" text="+51 73 123456" />
+				<ObjectAttribute title="Dirección" text="Av. Circunvalación #384 - 9 de Octubre Sullana" />
+				<ObjectAttribute title="Sitio Web" text="www.servismotochivirico.com" active="true"/>
+			</attributes>
+		</ObjectHeader>-->
+		<IconTabBar
+			id="idIconTabBarMain"
+			expanded="true"
+			class="sapUiResponsiveContentPadding">
+			<items>
+				<IconTabFilter
+					icon="sap-icon://workflow-tasks"
+					text="{i18n>Main.IconTabBar.IconTabFilter.1.Text}">
+					<VBox>
+							<Toolbar id="toolbarMonitoringServices">
+								<Title id="titleToolbarMonitoringServices" text="{i18n>Main.List.MonitoringServices.Title}" titleStyle="H4"/>
+								<ToolbarSpacer />
+								<Button icon="sap-icon://synchronize" type="Ghost"></Button>
+								<Button icon="sap-icon://add" type="Ghost"></Button>
+								<Button icon="sap-icon://detail-view" type="Ghost"></Button>
+							</Toolbar>
+							<List 
+								id="listMonitoringServices"  items="{
+									path: 'mMain>/Monitoring',
+									sorter: {
+										path: 'service_id'
+									}
+								}"
+								mode="SingleSelectMaster"
+								select="handlePressMonServ"
+								>
+								<items>
+									<StandardListItem 
+										title="{mMain>license_plate}" 
+										description="{mMain>service_description}" 
+										info="{mMain>status_description}" 
+										infoState="{mMain>status}" 
+										icon="{mMain>img_vehicle}" 
+										iconDensityAware="false" 
+										iconInset="false" />
+								</items>
+							</List>
+						</VBox>
+				</IconTabFilter>
+				<IconTabFilter
+					icon="sap-icon://switch-views"
+					text="{i18n>Main.IconTabBar.IconTabFilter.2.Text}">
+					<!--
+					<PlanningCalendar id="plaCalServiceAppointments"
+							rows="{path: 'mMain>/PlanningCalendar'}" 
+							appointmentsVisualization="Filled" 
+							appointmentSelect="handleAppointmentSelect" 
+							showEmptyIntervalHeaders="false" 
+							showWeekNumbers="false"
+							showRowHeaders="false">
+							<toolbarContent>
+								<Title text="{i18n>Main.PlanningCalendar.ServiceAppointments.Title}" titleStyle="H4"/>
+								<ToolbarSpacer />
+								<Button icon="sap-icon://synchronize" type="Ghost"></Button>
+								<Button icon="sap-icon://add" type="Ghost"></Button>
+								<Button icon="sap-icon://detail-view" type="Ghost"></Button>
+							</toolbarContent>
+							<rows>
+										<PlanningCalendarRow
+											appointments="{path : 'mMain>Appointments', templateShareable: 'true'}" >
+											<appointments>
+												<unified:CalendarAppointment
+													startDate="{mMain>start}"
+													endDate="{mMain>end}"
+													title="{mMain>title}"
+													text="{mMain>text}"
+													type="{mMain>type}"
+													tentative="{mMain>tentative}">
+												</unified:CalendarAppointment>
+											</appointments>
+										</PlanningCalendarRow>
+									</rows>
+						</PlanningCalendar>
+						-->
+					<PlanningCalendar id="plaCalServiceAppointments" rows="{path: 'mMonitor>/DATA_APOINTMENTS'}" appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" showWeekNumbers="false" showRowHeaders="false">
+						<toolbarContent>
+								<Title text="{i18n>Main.PlanningCalendar.ServiceAppointments.Title}" titleStyle="H4"/>
+								<ToolbarSpacer />
+								<Button icon="sap-icon://synchronize" type="Ghost"></Button>
+								<Button icon="sap-icon://add" type="Ghost"></Button>
+								<Button icon="sap-icon://detail-view" type="Ghost"></Button>
+							</toolbarContent>
+						<rows>
+							<PlanningCalendarRow appointments="{path : 'mMonitor>/DATA_APOINTMENTS/0/APPOINTMENTS', templateShareable: 'true'}">
+								<appointments>
+									<unified:CalendarAppointment 
+									startDate="{path:'mMonitor>start_pc', formatter:'util.Formatter.dateInFormatJS'}" 
+									endDate="{path:'mMonitor>end_pc', formatter:'util.Formatter.dateInFormatJS'}" 
+									title="{mMonitor>plate} - {mMonitor>owner}" 
+									text="{path:'mMonitor>services', formatter:'util.Formatter.listServicesInList'}" 
+									color="{path:'mMonitor>status', formatter:'util.Formatter.serviceStateColor'}"
+									icon="{mMonitor>img}"
+									tentative="{mMonitor>tentative}">
+									</unified:CalendarAppointment>
+								</appointments>
+							</PlanningCalendarRow>
+						</rows>
+					</PlanningCalendar>
+				</IconTabFilter>
+				<IconTabFilter
+					icon="sap-icon://pending"
+					text="{i18n>Main.IconTabBar.IconTabFilter.3.Text}">
+					<!-- To organize the requests -->
+					<IconTabBar
+						id="idIconTabBarRequests"
+						expanded="true"
+						class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter
+								text="{i18n>Main.IconTabBar.IconTabFilter.3.IconTabBar.IconTabFilter.1.Text}">
+								<List 
+									id="listApointments"  items="{
+										path: 'mMain>/Monitoring',
+										sorter: {
+											path: 'service_id'
+										}
+									}"
+									>
+									<items>
+										<NotificationListItem
+											title="{mMain>license_plate}"
+											description="{mMain>service_description}"
+											showCloseButton="true"
+											datetime="{mMain>start_date}"
+											unread="true"
+											priority="{mMain>priority}"
+											close="onItemClose"
+											press="onListItemPress"
+											authorName="{mMain>owner}"
+											authorPicture="{mMain>img_vehicle}">
+											<buttons>
+												<Button text="{i18n>Button.Accept}" type="Accept" press="onAcceptPress"/>
+												<Button text="{i18n>Button.Reject}" type="Reject" press="onRejectPress"/>
+											</buttons>
+										</NotificationListItem>
+									</items>
+								</List>
+							</IconTabFilter>
+							<IconTabFilter
+								text="{i18n>Main.IconTabBar.IconTabFilter.3.IconTabBar.IconTabFilter.2.Text}">
+								<List 
+									id="listRejectRequests"  items="{
+										path: 'mMain>/Monitoring',
+										sorter: {
+											path: 'service_id'
+										}
+									}"
+									>
+									<items>
+										<NotificationListItem
+											title="{mMain>license_plate}"
+											description="{mMain>service_description}"
+											showCloseButton="true"
+											datetime="{mMain>start_date}"
+											unread="true"
+											priority="{mMain>priority}"
+											close="onItemClose"
+											press="onListItemPress"
+											authorName="{mMain>owner}"
+											authorPicture="{mMain>img_vehicle}">
+											<buttons>
+												<Button text="{i18n>Button.Accept}" type="Accept" press="onAcceptPress"/>
+												<Button text="{i18n>Button.Reject}" type="Reject" press="onRejectPress"/>
+											</buttons>
+										</NotificationListItem>
+									</items>
+								</List>
+							</IconTabFilter>
+							<IconTabFilter id="itfMonitorRequests"
+								text="{i18n>Main.IconTabBar.IconTabFilter.3.IconTabBar.IconTabFilter.3.Text}">
+								<Table id="tableMonitorRequests"
+									items="{mMain>/Monitoring}"
+									growing="true"
+									growingThreshold="5"
+									itemPress="">
+									<!--<headerToolbar>
+										<Toolbar>
+											<ToolbarSpacer/>
+											<Button
+												tooltip="{i18n>Catalogos.MonitorEmpleado.Table.Header.Button.1.Tooltip}"
+												icon="sap-icon://action-settings"
+												press="onSettingsTableAsociados" />
+										</Toolbar>
+									</headerToolbar>-->
+									<columns>
+										<Column><Text text="" /></Column>
+										<Column
+											minScreenWidth="Phone"
+											demandPopin="true">
+												<Text text="{i18n>Main.IconTabBar.IconTabFilter.3.IconTabBar.IconTabFilter.3.Table.Column.1.Text}" />
+										</Column>
+										<Column
+											minScreenWidth="Tablet"
+											demandPopin="true">
+												<Text text="{i18n>Main.IconTabBar.IconTabFilter.3.IconTabBar.IconTabFilter.3.Table.Column.2.Text}" />
+										</Column>
+										<Column
+											minScreenWidth="Tablet"
+											demandPopin="true">
+												<Text text="{i18n>Main.IconTabBar.IconTabFilter.3.IconTabBar.IconTabFilter.3.Table.Column.3.Text}" />
+										</Column>
+										<Column
+											minScreenWidth="Phone"
+											demandPopin="true"
+											hAlign="End">
+												<Text text="{i18n>Main.IconTabBar.IconTabFilter.3.IconTabBar.IconTabFilter.3.Table.Column.4.Text}" />
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<f:Avatar src="{mMain>img_vehicle}" displaySize="M"/>
+												<Text text="{mMain>license_plate}" />
+												<Text text="{mMain>service_description}" />
+												<Text text="{mMain>owner}" />
+												<Text text="{mMain>start_date}" />
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</IconTabFilter>
+				
+			</items>
+		</IconTabBar>
+			
+						<!-- en List: headerText="Seguimiento de Servicios" -->
+						
+						
+
+
+						
+
+							<!--
+							<GenericTile id="idGTCatalogs" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+								header="{i18n>Main.GenericTile.1.Header}" subheader="{i18n>Main.GenericTile.1.SubHeader}" press="onSelectTile">
+								<TileContent unit="6" footer="">
+									<ImageContent src="sap-icon://database" />
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile id="idGTServiceSheet" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+								header="{i18n>Main.GenericTile.2.Header}" subheader="{i18n>Main.GenericTile.2.SubHeader}" press="onSelectTile">
+								<TileContent unit="240" footer="Febrero">
+									<ImageContent src="sap-icon://activity-2" />
+								</TileContent>
+							</GenericTile>
+
+							<GenericTile id="idGTProforma" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+								header="{i18n>Main.GenericTile.3.Header}" subheader="{i18n>Main.GenericTile.3.SubHeader}" press="onSelectTile">
+								<TileContent unit="240" footer="">
+									<ImageContent src="sap-icon://payment-approval" />
+								</TileContent>
+							</GenericTile>
+							
+							<TileContainer
+								id="tcMain">
+								<StandardTile
+									id="stCatalogs"
+									icon="sap-icon://database"
+									title="{i18n>Main.GenericTile.1.Header}" info="{i18n>Main.GenericTile.1.SubHeader}"
+									press="onSelectTile"/>
+								
+								<StandardTile
+									id="stServiceSheet"
+									icon="sap-icon://activity-2"
+									title="{i18n>Main.GenericTile.2.Header}" info="{i18n>Main.GenericTile.2.SubHeader}"
+									press="onSelectTile"/>
+								
+								<StandardTile
+									id="stProforma"
+									icon="sap-icon://payment-approval"
+									title="{i18n>Main.GenericTile.3.Header}" info="{i18n>Main.GenericTile.3.SubHeader}"
+									press="onSelectTile"/>
+								
+							</TileContainer>
+						-->
+
+				
+		</content>
+	</Page>
+</mvc:View>

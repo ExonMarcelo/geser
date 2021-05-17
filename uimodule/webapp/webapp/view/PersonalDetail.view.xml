@@ -1,0 +1,271 @@
+<core:View xmlns:core="sap.ui.core"
+		   xmlns="sap.uxap"
+		   xmlns:m="sap.m"
+		   xmlns:f="sap.f"
+		   xmlns:l="sap.ui.layout"
+		   xmlns:form="sap.ui.layout.form"
+		   controllerName="com.exonmarcelo.geser.webapp.controller.PersonalDetail"
+		   height="100%"
+>
+<m:Page showHeader="false" id="idPagePersonalDetail" enableScrolling="false">
+	<m:content>
+		<ObjectPageLayout id="ObjectPageLayoutVehicle"
+					  showTitleInHeaderContent="true"
+					  alwaysShowContentHeader="false"
+					  preserveHeaderStateOnScroll="false"
+					  headerContentPinnable="true"
+					  isChildPage="true"
+					  enableLazyLoading="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:VBox>
+						<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop"
+							src="{mPersonalDetail>/image}"
+						  	displaySize="S">
+						</f:Avatar>
+						<m:Label text="{mPersonalDetail>/name} {mPersonalDetail>/surname}" design="Bold"/>
+						<m:Label text="{mPersonalDetail>/dni}" />
+					</m:VBox>
+				</expandedHeading>
+
+				<snappedHeading>
+					<m:VBox>
+						<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop"
+							src="{mPersonalDetail>/image}"
+						  	displaySize="S">
+						</f:Avatar>
+						<m:Label text="{mPersonalDetail>/name} {mPersonalDetail>/surname}" design="Bold"/>
+						<m:Label text="{mPersonalDetail>/dni}" />
+					</m:VBox>
+				</snappedHeading>
+				
+				<actions>
+					<ObjectPageHeaderActionButton text="{i18n>PersonalDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.1.Text}" type="Emphasized" hideText="false" id="edit" press="onPressEdit" />
+ 					<ObjectPageHeaderActionButton text="{i18n>PersonalDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.2.Text}" type="Emphasized" hideText="false" id="save" press="onPressSave"  />
+					<ObjectPageHeaderActionButton type="Transparent" text="{i18n>PersonalDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.3.Text}" hideText="false" hideIcon="true" id="delete" press="onPressDelete" />
+ 					<ObjectPageHeaderActionButton type="Transparent" text="{i18n>PersonalDetail.ObjectPageLayout.ObjectPageDynamicHeaderTitle.Button.4.Text}" hideText="false" hideIcon="true" id="cancel" press="onPressCancel" /> 
+				</actions>
+
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+<!-- fin cabecera -->
+		<sections>
+			<ObjectPageSection id="section1" title="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.Title}">
+				<subSections>
+					<ObjectPageSubSection id="section1_SS1" title=" ">
+						<blocks>
+<!-- inicio block 1 -->						
+							<m:Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+								
+									<form:Form>
+										<form:layout>
+											<form:ResponsiveGridLayout labelSpanXL="4"
+												labelSpanL="4" labelSpanM="4" labelSpanS="4" emptySpanXL="0" emptySpanL="0"
+												emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2"
+												columnsM="2" singleContainerFullSize="true" />
+										</form:layout>
+										<form:formContainers>
+											<form:FormContainer title="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormContainer.Title}" id="idEmployeeFormDisplay">
+												<form:formElements>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.1.Label}">
+														<form:fields>
+															<m:Text text="{mPersonalDetail>/name}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.2.Label}">
+														<form:fields>
+															<m:Text text="{mPersonalDetail>/surname}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.3.Label}">
+														<form:fields>
+															<m:Text text="{mPersonalDetail>/dni}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.4.Label}">
+														<form:fields>
+															<m:Text text="{mPersonalDetail>/birthdate}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.5.Label}">
+														<form:fields>
+															<m:Text text="{mPersonalDetail>/phone}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.6.Label}">
+														<form:fields>
+															<m:Text text="{mPersonalDetail>/email}" />
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+											<!-- Form for edition mode -->
+											<form:FormContainer title="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormContainer.Title}" id="idEmployeeFormEdit">
+												<form:formElements>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.1.Label}">
+														<form:fields>
+															<m:Input value="{mPersonalDetail>/name}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.2.Label}">
+														<form:fields>
+															<m:Input value="{mPersonalDetail>/surname}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.3.Label}">
+														<form:fields>
+															<m:Input value="{mPersonalDetail>/dni}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.4.Label}">
+														<form:fields>
+															<m:DatePicker value="{mPersonalDetail>/birthdate}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.5.Label}">
+														<form:fields>
+															<m:Input value="{mPersonalDetail>/phone}" />
+														</form:fields>
+													</form:FormElement>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormElement.6.Label}">
+														<form:fields>
+															<m:Input value="{mPersonalDetail>/email}" />
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+										</form:formContainers>
+									</form:Form>
+								
+							</m:Panel>
+							
+<!-- fin block 1 -->
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection id="section2"  title="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Access.Title}">
+				<subSections>
+					<ObjectPageSubSection  title="">
+						<blocks>
+							<m:Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+								<!-- Show button if user is not defined -->
+								<m:VBox id="idVBoxWarningUser" alignItems="Center" alignContent="Center">
+									<m:items>
+										<m:MessageStrip
+											text="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Access.MessageStrip.Text}"
+											type="Warning"
+											showIcon="true"
+											class="sapUiMediumMarginBottom"/>
+										<m:Button text="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Access.Button.1.Text}" type="Emphasized" press="onAddUser"/>
+									</m:items>
+								</m:VBox>
+								<form:Form id="idFormDisplayEditUser">
+										<form:layout>
+											<form:ResponsiveGridLayout labelSpanXL="4"
+												labelSpanL="4" labelSpanM="4" labelSpanS="4" emptySpanXL="0" emptySpanL="0"
+												emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2"
+												columnsM="2" singleContainerFullSize="true" />
+										</form:layout>
+										<form:formContainers>
+											<form:FormContainer title="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormContainer.Title}" id="idUserFormDisplay">
+												<form:formElements>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Access.FormElement.Title}">
+														<form:fields>
+															<m:VBox>
+																<m:Text text="{mPersonalDetail>/user}" />
+																<m:Button text="{i18n>Button.Change}" icon="sap-icon://user-edit" press="onChangeUser"/>
+															</m:VBox>
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+											<!-- Form for edition mode -->
+											<form:FormContainer title="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Info.FormContainer.Title}" id="idUserFormEdit">
+												<form:formElements>
+													<form:FormElement label="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Access.FormElement.Title}">
+														<form:fields>
+															<m:VBox>
+																<m:Input value="{mPersonalDetail>/user}" />
+																<m:Button text="{i18n>Button.Save}" icon="sap-icon://save" press="onSaveUser"/>
+																<m:Button text="{i18n>Button.Cancel}" icon="sap-icon://sys-cancel" press="onCancelChangeUser"/>
+															</m:VBox>
+														</form:fields>
+													</form:FormElement>
+												</form:formElements>
+											</form:FormContainer>
+										</form:formContainers>
+									</form:Form>
+							
+							</m:Panel>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<ObjectPageSection id="section3"  title="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Roles.Title}">
+				<subSections>
+					<ObjectPageSubSection  title="">
+						<blocks>
+						<m:Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+						<m:Toolbar width="100%">
+							<m:Title text="{i18n>Table.Records.Text}" level="H2"/>
+							<m:Title text="(0)" level="H2" id="countPersonalDetail"/>
+							<m:ToolbarSpacer/>
+							<m:Button
+								tooltip="{i18n>Table.Settings.Text}"
+								icon="sap-icon://action-settings"
+								press="onSettingsTablePersonalDetail" />
+							<m:Button
+								tooltip="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.PersonalDetail.Table.Header.Button.1.Text}"
+								icon="sap-icon://add"
+								press="onAddRole" />
+						</m:Toolbar>	
+
+						<m:Table id="tablePersonalDetailOnVehDetail"
+							items="{mCatalogs>/ROLES}"
+							growing="true"
+    						growingThreshold="5"
+							itemPress="onItemPressPersonalDetail">
+							<m:columns>
+								
+								<m:Column>
+										<m:Text text="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Roles.Table.Column.1.Label}" />
+									</m:Column>
+								<m:Column
+									minScreenWidth="Phone"
+									demandPopin="true"
+									hAlign="End"
+									>
+										<m:Text text="{i18n>PersonalDetail.ObjectPageLayout.Sections.ObjectPageSection.Roles.Table.Column.2.Label}" />
+									</m:Column>
+								
+							</m:columns>
+							<m:items>
+								<m:ColumnListItem>
+									<m:cells>
+										<m:Link text="{mCatalogs>description}" press="onPressEditRole"/>
+										<m:Button icon="sap-icon://delete" />
+									</m:cells>
+								</m:ColumnListItem>
+							</m:items>
+						</m:Table>
+							
+							</m:Panel>
+
+							
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+		</sections>
+<!-- fin secciones  -->
+	</ObjectPageLayout>
+	</m:content>
+</m:Page>
+	
+</core:View>

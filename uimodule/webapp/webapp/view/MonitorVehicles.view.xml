@@ -1,0 +1,55 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+        xmlns:f="sap.f"
+		controllerName="com.exonmarcelo.geser.webapp.controller.MonitorVehicles" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" id="idPageMonitorVehicles">
+		<content>
+			<Page showHeader="false">
+				<content>
+			<!--<core:Fragment fragmentName="com.smch.geser.app.view.fragments.UserBar" type="XML" /> -->
+			<Table
+				id="idTableVehicles"
+				itemPress="onItemPress"
+				items="{mCatalogs>/VEHICLES}">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>Table.Records.Text}" level="H2"/>
+						<Title text="(0)" id="idCounterVehicles" level="H2"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button icon="sap-icon://provision"  press="onSettingsTableVehicles"></Button>
+						<!--<Button icon="sap-icon://clear-filter"  press="fnCleanFilters"></Button>-->
+						<Button icon="sap-icon://add"  press="onSelectCustomer"></Button>
+					</Toolbar>
+					
+				</headerToolbar>
+				<columns>
+								<Column><Text text="{i18n>MonitorVehicles.Table.Column.1}" /></Column>
+								<Column
+									minScreenWidth="Phone"
+									demandPopin="true"><Text text="{i18n>MonitorVehicles.Table.Column.2}" /></Column>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true">
+										<Text text="{i18n>MonitorVehicles.Table.Column.3}" />
+									</Column>
+								<Column
+									minScreenWidth="Phone"
+									demandPopin="true">
+										<Text text="{i18n>MonitorVehicles.Table.Column.4}" />
+									</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Navigation">
+									<cells>
+										<f:Avatar src="{mCatalogs>image}" displaySize="M" />		
+										<Text text="{mCatalogs>plate}" />
+										<Text text="{mCatalogs>brand}" />
+										<Text text="{mCatalogs>cylinder}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+			</Table>
+			</content>
+		</Page>
+		</content>
+	</Page>
+</core:View>
